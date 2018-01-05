@@ -42,6 +42,15 @@ func showTable(rw http.ResponseWriter, r *http.Request) {
 }
 
 func initRoutes(mx *mux.Router) {	
-	webRoot := os.Getenv("WEBROOT")	if len(webRoot) == 0 {		if root, err := os.Getwd(); err != nil {			panic("Could not retrive working directory")		} else {			webRoot = root			//fmt.Println(root)		}	}
-	mx.HandleFunc("/unknown", unknownImp).Methods("GET")	mx.HandleFunc("/api", apihandle).Methods("GET")	mx.HandleFunc("/", showTable).Methods("POST")	mx.PathPrefix("/").Handler(http.FileServer(http.Dir(webRoot + "/assets/")))
+	webRoot := os.Getenv("WEBROOT")	if len(webRoot) == 0 {		
+		if root, err := os.Getwd(); err != nil {			
+			panic("Could not retrive working directory")		
+		} else {			
+			webRoot = root			
+		}	
+	}
+	mx.HandleFunc("/unknown", unknownImp).Methods("GET")	
+	mx.HandleFunc("/api", apihandle).Methods("GET")	
+	mx.HandleFunc("/", showTable).Methods("POST")	
+	mx.PathPrefix("/").Handler(http.FileServer(http.Dir(webRoot + "/assets/")))
 }
