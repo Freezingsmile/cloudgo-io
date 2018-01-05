@@ -42,7 +42,8 @@ func showTable(rw http.ResponseWriter, r *http.Request) {
 }
 
 func initRoutes(mx *mux.Router) {	
-	webRoot := os.Getenv("WEBROOT")	if len(webRoot) == 0 {		
+	webRoot := os.Getenv("WEBROOT")	
+	if len(webRoot) == 0 {		
 		if root, err := os.Getwd(); err != nil {			
 			panic("Could not retrive working directory")		
 		} else {			
