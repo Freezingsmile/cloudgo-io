@@ -1,7 +1,7 @@
 package main
 
 import (	
-"cloudgo-io/server"
+"cloudgo-io"
 )
 
 func main() {	
